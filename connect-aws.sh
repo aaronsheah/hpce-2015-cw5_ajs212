@@ -1,5 +1,6 @@
 # Connect to AWS Instance
-ssh -i /Users/aaronsheah/Documents/Keys/ec2-keypair.pem admin@54.165.177.175
+# ssh -i /Users/aaronsheah/Documents/Keys/ec2-keypair.pem admin@54.165.177.175 ## GPU Instance
+ssh -i /Users/aaronsheah/Documents/Keys/ec2-keypair.pem ubuntu@54.236.150.88 ## Free Instance
 
 # scp -i /Users/aaronsheah/Documents/Keys/ec2-keypair.pem provider/puzzles.cpp admin@54.165.177.175:hpce-2015-cw5_ajs212/provider/puzzles.cpp
 # scp -i /Users/aaronsheah/Documents/Keys/ec2-keypair.pem provider/makefile admin@54.165.177.175:hpce-2015-cw5_ajs212/provider/makefile
