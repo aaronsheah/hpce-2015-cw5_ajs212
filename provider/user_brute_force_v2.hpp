@@ -28,10 +28,10 @@ public:
   {}
 
   virtual void Execute(
-           puzzler::ILog *log,
-           const puzzler::BruteForceInput *input,
-           puzzler::BruteForceOutput *output
-           ) const override {
+		       puzzler::ILog *log,
+		       const puzzler::BruteForceInput *input,
+		       puzzler::BruteForceOutput *output
+		       ) const override {
     // return ReferenceExecute(log, input, output);
       log->LogInfo("Starting search, n=%u, cipherText=%llu, rounds=%u", input->n, input->cipherText, input->rounds);
 

@@ -28,23 +28,20 @@ public:
   {}
 
   virtual void Execute(
-           puzzler::ILog *log,
-           const puzzler::BruteForceInput *input,
-           puzzler::BruteForceOutput *output
-           ) const override {
+		       puzzler::ILog *log,
+		       const puzzler::BruteForceInput *input,
+		       puzzler::BruteForceOutput *output
+		       ) const override {
     // return ReferenceExecute(log, input, output);
       log->LogInfo("Starting search, n=%u, cipherText=%llu, rounds=%u", input->n, input->cipherText, input->rounds);
 
       std::vector<int> hit(input->n, 0); // Array to hold hit/miss
-            
-      /********* TBB Parfor *********/
-      auto loop_body = [&] (unsigned i){
+      
+      for(unsigned i=0; i<input->n; i++){
         uint64_t tmp=TEA_hash(i, &input->key[0], input->rounds);
         hit[i] = tmp==input->cipherText;
         log->LogDebug("  encrypt(%llu) == %llu, hit=%i", (uint64_t)i, tmp, hit[i]);
-      };
-      tbb::parallel_for<unsigned>(0,input->n, loop_body);
-      /******************************/
+      }
 
       uint32_t index=std::find(hit.begin(), hit.end(), 1)-hit.begin();
       if(index>=hit.size())
@@ -52,6 +49,9 @@ public:
       
       output->plainText = index;
   }
+
+  
+
 };
 
 #endif

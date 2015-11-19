@@ -25,7 +25,7 @@ public:
 	      auto timing_analysis = [&](unsigned i) {
 	      		unsigned got=delay(i, input);
 			histogram[got]++;
-	      };
+	      }
 	      tbb::parallel_for<unsigned>(0, input->flipFlopCount, timing_analysis);
 	      
 	      log->LogVerbose("Finished timing analysis, converting histogram");
@@ -37,7 +37,7 @@ public:
 				res.at(i)=histogram.at(i);
 			}
 			log->LogInfo(" histogram[%u] = %u", i, res[i]);
-	      };
+	      }
 	      tbb::parallel_for<unsigned>(0, res.size(), convert_histogram);
 
 	      
