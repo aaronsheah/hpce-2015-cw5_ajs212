@@ -4,6 +4,27 @@ CPPFLAGS += -std=c++11 -W -Wall  -g
 CPPFLAGS += -O3
 CPPFLAGS += -I include
 
+##### TBB Dependencies #####
+
+LDLIBS = -ltbb
+
+# TBB_INC_DIR ?= /usr/local/include
+TBB_INC_DIR ?= /usr/include/
+
+# TBB_LIB_DIR ?= /usr/local/lib
+TBB_LIB_DIR ?= /usr/lib/
+
+CPPFLAGS += -I $(TBB_INC_DIR)
+LDFLAGS += -L $(TBB_LIB_DIR)
+
+
+######### OpenCL #########
+
+
+LDLIBS += -lOpenCL
+
+##########################
+
 lib/libpuzzler.a : provider/*.cpp provider/*.hpp
 	cd provider && $(MAKE) all
 

@@ -5,3 +5,5 @@
 *.in
 *.ref
 *.got
+
+.bash_profile
