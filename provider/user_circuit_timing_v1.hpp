@@ -22,7 +22,7 @@ public:
 	      std::map<unsigned,unsigned> histogram;
 	      
 	      for(unsigned i=0; i<input->flipFlopCount; i++){
-	        unsigned got=delay(i, input);
+	  	  unsigned got=delay(input->wires.at(i), input);
 	        histogram[got]++;
 	      }
 	      

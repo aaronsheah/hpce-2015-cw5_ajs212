@@ -126,7 +126,7 @@ namespace puzzler
       std::map<unsigned,unsigned> histogram;
       
       for(unsigned i=0; i<pInput->flipFlopCount; i++){
-        unsigned got=delay(i, pInput);
+        unsigned got=delay(pInput->wires.at(i), pInput);
         histogram[got]++;
       }
       
